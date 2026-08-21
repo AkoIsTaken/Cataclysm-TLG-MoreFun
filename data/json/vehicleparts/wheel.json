@@ -203,7 +203,7 @@
       "repair": { "skills": [ [ "mechanics", 6 ] ], "time": "20 m", "using": [ [ "repair_welding_standard", 10 ] ] }
     },
     "flags": [ "ARMOR", "OBSTACLE", "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "STEERABLE", "NO_INSTALL_PLAYER" ],
-    "wheel_offroad_rating": 0.01,
+    "wheel_offroad_rating": 0.05,
     "wheel_terrain_modifiers": { "FLAT": [ 0, 6 ], "ROAD": [ 0, 10 ] },
     "//COMMENT3": "Wow! I have no idea how to calculate this, and I don't think anyone else does. So I've simply scaled it to be larger relative to the largest wheel (the armored wheel).",
     "contact_area": 1200,

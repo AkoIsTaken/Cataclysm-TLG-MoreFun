@@ -1186,10 +1186,11 @@ vehicle *map::move_vehicle( vehicle &veh, const tripoint_rel_ms &dp, const tiler
                                       has_flag( ter_furn_flag::TFLAG_SHARP, wheel_p );
 
             const bool hazard = extra_hazard ||
-                                ( has_flag( ter_furn_flag::TFLAG_DIGGABLE, wheel_p ) &&
+                                (velocity > 1870 && has_flag( ter_furn_flag::TFLAG_DIGGABLE, wheel_p ) &&
                                   !has_flag( ter_furn_flag::TFLAG_ROAD, wheel_p ) &&
                                   !has_flag( ter_furn_flag::TFLAG_TIRE_SAFE, wheel_p ) );
-            if( !hazard || ( vp_wheel.info().wheel_info->offroad_rating >= 0.6f && !extra_hazard ) ) {
+
+            if( !hazard || ( vp_wheel.info().wheel_info->offroad_rating >= 0.35f && !extra_hazard ) ) {
                 continue;
             }
             // Turn this numerator down if you want to make procs more likely, up if you want less.
