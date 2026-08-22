@@ -7633,20 +7633,17 @@ void vehicle::damage_all( map &here, int dmg1, int dmg2, const damage_type_id &t
         return;
     }
 
-    for( const vpart_reference &vpr : get_all_parts() ) {
-        vehicle_part &vp = vpr.part();
-        const int distance = 1 + square_dist( vp.mount, impact );
+    for (const vpart_reference& vpr : get_all_parts()) {
+        vehicle_part& vp = vpr.part();
+        const int distance = 1 + square_dist(vp.mount, impact);
         int reduced = 0;
         // Driver skill can mitigate damage.
-        if( get_driver( here ) && get_driver( here )->get_skill_level( skill_driving ) >= rng( 0, 11 ) ) {
-            reduced = rng( 0, 3 );
+        if (get_driver(here) && get_driver(here)->get_skill_level(skill_driving) >= rng(0, 11)) {
+            reduced = rng(0, 1);
         }
-        if( distance > 1 ) {
-            int net_dmg = rng( dmg1, dmg2 ) / ( reduced + distance * distance * distance );
-            if( net_dmg > 25 ) {
-                damage_direct(here, vp, net_dmg, type);
-            }
-
+        if (distance > 1) {
+            int net_dmg = rng(dmg1, dmg2) / (reduced + pow( distance, 2.35 ));
+            damage_direct(here, vp, net_dmg, type);
         }
     }
 }

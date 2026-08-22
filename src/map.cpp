@@ -1046,7 +1046,7 @@ vehicle *map::move_vehicle( vehicle &veh, const tripoint_rel_ms &dp, const tiler
                     veh.damage( *this, part_num, coll_dmg, damage_bash, true );
                 } else {
                     impulse += coll_dmg;
-                    veh.damage( *this, part_num, coll_dmg, damage_bash );
+                    veh.damage( *this, part_num, coll_dmg * 1.075, damage_bash );
                     veh.damage_all( *this, coll_dmg / 2, coll_dmg, damage_bash, collision_point );
                 }
             }
