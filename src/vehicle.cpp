@@ -7639,11 +7639,14 @@ void vehicle::damage_all( map &here, int dmg1, int dmg2, const damage_type_id &t
         int reduced = 0;
         // Driver skill can mitigate damage.
         if( get_driver( here ) && get_driver( here )->get_skill_level( skill_driving ) >= rng( 0, 11 ) ) {
-            reduced = rng( 0, 1 );
+            reduced = rng( 0, 3 );
         }
         if( distance > 1 ) {
-            int net_dmg = rng( dmg1, dmg2 ) / ( reduced + distance * distance );
-            damage_direct( here, vp, net_dmg, type );
+            int net_dmg = rng( dmg1, dmg2 ) / ( reduced + distance * distance * distance );
+            if( net_dmg > 25 ) {
+                damage_direct(here, vp, net_dmg, type);
+            }
+
         }
     }
 }
